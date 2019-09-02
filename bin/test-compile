@@ -7,6 +7,7 @@ mkdir -p "$2"/plts
 [ -f "$2"/plts/dialyzer.plt ] && echo "Resoring cache..." && cp "$2"/plts/* "$1"/priv/plts || echo "Cache empty"
 
 echo "Updating plts"
+cd "$1"
 mix dialyzer --plt
 
 echo "Caching plts..."
