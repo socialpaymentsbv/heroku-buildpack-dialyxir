@@ -1,2 +1,2 @@
 # heroku-buildpack-dialyxir
-Run and cache dielyxir in Heroku CI
+Create and cache PLT files during test-compile phase, and run `mix dialyzer` during test phase.
