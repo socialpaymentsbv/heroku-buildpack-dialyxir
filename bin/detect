@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if mix help | grep dialyzer; then
+  echo "Dialyxir" 
+  exit 0
+else
+  echo "Dialyxir not found!"
+  exit 1
+fi
