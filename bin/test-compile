@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo "$2"
-
+mkdir -p "$1"/priv/plts
 mkdir -p "$2"/plts
 # restore cache
 cp "$2"/plts/* "$1"/priv/plts
@@ -9,4 +8,4 @@ cp "$2"/plts/* "$1"/priv/plts
 mix dialyzer --plt
 
 # store in cache
-cp "$1"/priv/plts "$2"/plts
+cp "$1"/priv/plts/* "$2"/plts
