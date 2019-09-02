@@ -1,11 +1,13 @@
 #!/bin/bash
 
+echo "Test compile"
+
 mkdir -p "$1"/priv/plts
 mkdir -p "$2"/plts
-# restore cache
+echo "Resoring cache..."
 cp "$2"/plts/* "$1"/priv/plts
 
 mix dialyzer --plt
 
-# store in cache
+echo "Caching plts..."
 cp "$1"/priv/plts/* "$2"/plts

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if cat mix.exs | grep dialyxir; then
+if grep dialyxir "$1"/mix.exs; then
   echo "Dialyxir" 
   exit 0
 else
