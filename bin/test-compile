@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo $MIX_ENV
 mkdir -p "$1"/priv/plts
 mkdir -p "$2"/plts
 

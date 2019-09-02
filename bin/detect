@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if grep --quiet dialyxir "$1"/mix.exs; then
-  echo "-----> Detected Dialyxir app" 
+  echo "Dialyxir app" 
   exit 0
 else
-  echo "-----> Could not find dialyxir in `mix.exs` file"
+  echo "Could not find dialyxir in `mix.exs` file"
   exit 1
 fi
