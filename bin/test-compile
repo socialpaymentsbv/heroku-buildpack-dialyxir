@@ -9,7 +9,7 @@ mkdir -p "$2"/plts
 
 echo "Updating plts"
 cd "$1"
-mix dialyzer --plt
+MIX_ENV=test mix dialyzer --plt
 
 echo "Caching plts..."
 cp "$1"/priv/plts/* "$2"/plts
