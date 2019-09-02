@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if mix help | grep dialyzer; then
+if cat mix.exs | grep dialyxir; then
   echo "Dialyxir" 
   exit 0
 else
