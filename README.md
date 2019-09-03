@@ -16,7 +16,7 @@ Add
     ]
 ```
 
-to your `mix.exs` file and set `plt_file` to $CACHE_DIR that is set by this buildpack.
+to your `mix.exs` file and set `plt_file` to `priv/plts/dialyzer.plt`
 
 ```
   def project do
@@ -29,10 +29,24 @@ to your `mix.exs` file and set `plt_file` to $CACHE_DIR that is set by this buil
 
 ```
   defp dialyzer(:test) do
-    [plt_file: {:no_warn, "#{System.get_env("CACHE_PATH")}/dialyzer.plt"}]
+    [
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+    ]
   end
 
   defp dialyzer(_) do
     []
   end
 ```
+
+### Explenation:
+
+We decided to use commit ref because on dialyxir rc-6 there was still a bug
+that required a lot of config as a workaround.
+
+We put both core plts and project plt file in the `priv/plts` for the test environment.
+The buildpack reads those from the cache during `test-compile` phase.
+
+The buildpack runs `MIX_ENV=test mix dialyzer`, so it requires that the project was previously compiled
+for the `:test` environment.
