@@ -50,3 +50,7 @@ The buildpack reads those from the cache during `test-compile` phase.
 
 The buildpack runs `MIX_ENV=test mix dialyzer`, so it requires that the project was previously compiled
 for the `:test` environment.
+
+We couldn't find a way to clear Heroku's CI cache, so we decided to introduce `DIALYXIR_SKIP_CACHE` config.
+When set to `true`. We won't read current value from the cache effectively recreating PLTs.
+The PLTs will be normally used in the next run.

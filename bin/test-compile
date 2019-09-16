@@ -3,9 +3,14 @@
 echo $MIX_ENV
 mkdir -p "$1"/priv/plts
 mkdir -p "$2"/plts
+SKIP_CACHE="${DIALYXIR_SKIP_CACHE:-false}"
 
 # the -f test supresses warnings when cache is empty
-[ -f "$2"/plts/dialyzer.plt ] && echo "Resoring cache..." && cp "$2"/plts/* "$1"/priv/plts || echo "Cache empty"
+if [ "$SKIP_CACHE" == "true" ]; then
+	echo "Ignoring cached PLTs"
+else
+	[ -f "$2"/plts/dialyzer.plt ] && echo "Resoring cache..." && cp "$2"/plts/* "$1"/priv/plts || echo "Cache empty"
+fi
 
 echo "Updating plts"
 cd "$1"
